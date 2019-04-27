@@ -27,6 +27,12 @@ app.get("/",(req,res)=>
 
 app.use(User);
 
+app.get("*",(req,res)=>
+{
+    res.render("notfound.ejs");
+})
+
+
 
 app.listen(process.env.PORT,process.env.IP,function(){
     
