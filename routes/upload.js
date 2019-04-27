@@ -5,10 +5,10 @@ var multer = require('multer');
 var fs=require("fs")
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 
-var visualRecognition = new VisualRecognitionV3({
-	version: '2019-04-27',
-	iam_apikey: process.env.apikey
-});
+// var visualRecognition = new VisualRecognitionV3({
+// 	version: '2019-04-27',
+// 	iam_apikey: process.env.apikey;
+// });
 
 
 var storage = multer.diskStorage({
@@ -52,15 +52,15 @@ var params = {
 	threshold: threshold
 };
 
-visualRecognition.classify(params, function(err, response) {
-	if (err) { 
-		console.log(err);
-	} else {
-	    var result=response.images[0].classifiers[0].classes[0].class;
-	    res.render("results.ejs",{res:result});
-		//res.send(JSON.stringify(response, null, 2))
-	}
-});
+// visualRecognition.classify(params, function(err, response) {
+// 	if (err) { 
+// 		console.log(err);
+// 	} else {
+// 	    var result=response.images[0].classifiers[0].classes[0].class;
+// 	    res.render("results.ejs",{res:result});
+// 		//res.send(JSON.stringify(response, null, 2))
+// 	}
+// });
     
 })
 
