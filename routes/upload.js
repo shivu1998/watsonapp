@@ -1,3 +1,4 @@
+require("dotenv").config()
 var express = require("express");
 var router = express.Router();
 var multer = require('multer');
@@ -6,7 +7,7 @@ var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3'
 
 var visualRecognition = new VisualRecognitionV3({
 	version: '2019-04-27',
-	iam_apikey: "api key here"
+	iam_apikey: process.env.apikey
 });
 
 
@@ -42,7 +43,7 @@ router.get("/classify",function(req,res)
 router.post("/upload",upload.single("image"),(req,res)=>
 {
 var images_file= fs.createReadStream(req.file.path);
-var classifier_ids = "put classifier id here";
+var classifier_ids = process.env.classifier_id;
 var threshold = 0.6;
 
 var params = {
